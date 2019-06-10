@@ -9,7 +9,7 @@
 
 class Logger {
     public:
-        Logger() = default;
+        Logger(const std::string& name = "root"): _name(name) {};
         Logger(const Logger&) = default;
 
         Logger& add_handler(std::shared_ptr<IHandler> handler);
@@ -18,6 +18,7 @@ class Logger {
         ~Logger() = default;
 
     private:
+        std::string _name;
         std::list<std::shared_ptr<IHandler>> _handlers;
 };
 

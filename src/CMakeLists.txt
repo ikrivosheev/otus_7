@@ -5,7 +5,7 @@ add_executable(bulk main.cpp)
 add_library(utils version.cpp)
 add_library(logger record.cpp logger.cpp console_handler.cpp file_handler.cpp)
 
-set_target_properties(bulk utils PROPERTIES
+set_target_properties(bulk utils logger PROPERTIES
    CXX_STANDARD 14
    CXX_STANDARD_REQUIRED ON
    COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
