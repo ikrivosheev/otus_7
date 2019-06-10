@@ -1,3 +1,3 @@
-# Otus, Logger
+# Otus, Bulk 
 
-![](https://travis-ci.org/ikrivosheev/otus_6.svg?branch=master)
+![](https://travis-ci.org/ikrivosheev/otus_7.svg?branch=master)
