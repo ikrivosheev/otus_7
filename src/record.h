@@ -3,6 +3,7 @@
 
 #include <string>
 #include <chrono>
+#include <ctime>
 
 class Record {
     public:
