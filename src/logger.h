@@ -9,16 +9,23 @@
 
 class Logger {
     public:
-        Logger(const std::string& name = "root"): _name(name) {};
-        Logger(const Logger&) = default;
-
         Logger& add_handler(std::shared_ptr<IHandler> handler);
-        void emit(const Record&);
-        void emit(const std::string&);
+        void log(const Record&);
+        void log(const std::string&);
+        void log(const std::string&, const std::time_t&);
+
         ~Logger() = default;
 
+        static Logger& get() {
+            static Logger logger;
+            return logger;
+        }
+
     private:
-        std::string _name;
+        Logger() {};
+        Logger(const Logger&);
+        Logger& operator=(Logger&);
+
         std::list<std::shared_ptr<IHandler>> _handlers;
 };
 

@@ -3,7 +3,7 @@ configure_file(config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/config.h)
 add_executable(bulk main.cpp)
 
 add_library(utils version.cpp)
-add_library(logger record.cpp logger.cpp console_handler.cpp file_handler.cpp)
+add_library(logger record.cpp logger.cpp console_handler.cpp file_handler.cpp state_machine.cpp)
 
 set_target_properties(bulk utils logger PROPERTIES
    CXX_STANDARD 14

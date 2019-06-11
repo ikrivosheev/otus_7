@@ -5,13 +5,18 @@ Logger& Logger::add_handler(std::shared_ptr<IHandler> handler) {
     return (*this);
 }
 
-void Logger::emit(const Record& record) {
+void Logger::log(const Record& record) {
     for (auto& handler: _handlers) {
         handler.get()->emit(record);
     }
 }
 
-void Logger::emit(const std::string& str) {
+void Logger::log(const std::string& str) {
     Record record(str);
-    emit(record);
+    log(record);
+}
+
+void Logger::log(const std::string& str, const std::time_t& time) {
+    Record record(str, time);
+    log(record);
 }
