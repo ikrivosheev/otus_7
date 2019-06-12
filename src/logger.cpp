@@ -1,9 +1,5 @@
 #include "logger.h"
 
-Logger& Logger::add_handler(std::shared_ptr<IHandler> handler) {
-    _handlers.push_back(handler);
-    return (*this);
-}
 
 void Logger::log(const Record& record) {
     for (auto& handler: _handlers) {

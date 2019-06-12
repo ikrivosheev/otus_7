@@ -25,7 +25,6 @@ class StateMachine {
 
         int _bulk_size;
         STATE _cstate = STATE::COMMAND;
-        bool _first_command = true;
         std::time_t _time = 0;
         std::stack<char> _stack;
         std::vector<std::string> _commands;

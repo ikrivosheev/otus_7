@@ -1,15 +1,22 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 
+#include <vector>
 #include <memory>
-#include <list>
+#include <type_traits>
 #include "handler.h"
 #include "record.h"
 
 
 class Logger {
     public:
-        Logger& add_handler(std::shared_ptr<IHandler> handler);
+        template<typename T, typename... Args>
+        Logger& add_handler(Args&&... args) {
+            static_assert(std::is_base_of<IHandler, T>::value, "Handler must be extend IHandler");
+            // std::unique_ptr<IHandler> handler = std::make_unique<T>(std::forward<Args>(args)...);
+            _handlers.push_back(std::make_unique<T>(std::forward<Args>(args)...));
+            return (*this);
+        }
         void log(const Record&);
         void log(const std::string&);
         void log(const std::string&, const std::time_t&);
@@ -26,7 +33,7 @@ class Logger {
         Logger(const Logger&);
         Logger& operator=(Logger&);
 
-        std::list<std::shared_ptr<IHandler>> _handlers;
+        std::vector<std::unique_ptr<IHandler>> _handlers;
 };
 
 #endif // LOGGER_H

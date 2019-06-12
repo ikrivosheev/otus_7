@@ -19,8 +19,8 @@ int main(int argc, char** argv) {
         std::cerr << e.what() << std::endl;
         return 1;
     }
-    Logger::get().add_handler(std::make_shared<ConsoleHandler>());
-    Logger::get().add_handler(std::make_shared<FileHandler>("/tmp/", "bulk"));
+    Logger::get().add_handler<ConsoleHandler>();
+    Logger::get().add_handler<FileHandler>("/tmp/", "bulk");
     StateMachine state(bulk_size);
     while (true) {
         std::string tmp;

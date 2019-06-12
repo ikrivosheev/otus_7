@@ -16,11 +16,10 @@ void StateMachine::push_command(const std::string& command) {
                 _cstate = STATE::BLOCK;
             }
             else {
-                if (_first_command) {
-                    time(&_time);
-                    _first_command = false;
-                }
                 _commands.push_back(command);
+                if (_commands.size() == 1) {
+                    time(&_time);
+                }
                 if (_commands.size() == _bulk_size) {
                     execute();
                 }
