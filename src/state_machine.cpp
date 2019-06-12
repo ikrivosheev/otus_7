@@ -6,10 +6,13 @@ StateMachine::StateMachine(int bulk_size) {
     _bulk_size = bulk_size;
 }
 
+STATE StateMachine::current_state() {
+    return _cstate;
+}
 
 void StateMachine::push_command(const std::string& command) {
     switch(_cstate) {
-        case StateMachine::STATE::COMMAND:
+        case STATE::COMMAND:
             if (command == "{") {
                 _stack.push('{');
                 execute();
@@ -25,7 +28,7 @@ void StateMachine::push_command(const std::string& command) {
                 }
             }
             break;
-        case StateMachine::STATE::BLOCK:
+        case STATE::BLOCK:
             if (command == "{") {
                 _stack.push('{');
                 break;
