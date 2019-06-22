@@ -1,3 +1,5 @@
+#include <memory>
+#include <ostream>
 #include "console_handler.h"
 
 

@@ -2,14 +2,10 @@
 #include "file_handler.h"
 
 
-FileHandler::FileHandler(const std::string& base_dir) {
-    _base_dir = base_dir;
-}
+FileHandler::FileHandler(const std::string& base_dir): _base_dir(base_dir) {}
 
-FileHandler::FileHandler(const std::string& base_dir, const std::string& prefix) {
-    _base_dir = base_dir;
-    _prefix = prefix;
-}
+FileHandler::FileHandler(const std::string& base_dir, const std::string& prefix):
+    _base_dir(base_dir), _prefix(prefix) {}
 
 
 void FileHandler::flush() {

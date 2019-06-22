@@ -10,6 +10,13 @@
 
 class Logger {
     public:
+        Logger& (const Logger&&) = default;
+        Logger& operator = (const Logger&) = default;
+
+        Logger() {} = delete;
+        Logger(const Logger&) = delete;
+        Logger& operator=(Logger&) = delete;
+
         template<typename T, typename... Args>
         Logger& add_handler(Args&&... args) {
             static_assert(std::is_base_of<IHandler, T>::value, "Handler must be extend IHandler");
@@ -29,10 +36,6 @@ class Logger {
         }
 
     private:
-        Logger() {};
-        Logger(const Logger&);
-        Logger& operator=(Logger&);
-
         std::vector<std::unique_ptr<IHandler>> _handlers;
 };
 

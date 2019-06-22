@@ -1,8 +1,6 @@
 #ifndef CONSOLE_HANDLER_H
 #define CONSOLE_HANDLER_H
 
-#include <memory>
-#include <ostream>
 #include "handler.h"
 
 
