@@ -10,12 +10,10 @@
 
 class Logger {
     public:
-        Logger& (const Logger&&) = default;
-        Logger& operator = (const Logger&) = default;
+        Logger() {};
 
-        Logger() {} = delete;
         Logger(const Logger&) = delete;
-        Logger& operator=(Logger&) = delete;
+        Logger& operator=(const Logger&) = delete;
 
         template<typename T, typename... Args>
         Logger& add_handler(Args&&... args) {
